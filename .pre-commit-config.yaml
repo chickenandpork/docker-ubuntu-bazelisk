@@ -1,0 +1,41 @@
+# To install the dependencies for this file:
+# i1) pip install pre-commit
+#   (really, "sudo python3 -m pip install pre-commit")
+#
+# pre-commit install --allow-missing-config
+#
+# yamllint checks this .pre-commit-config.yaml file as well
+repos:
+  - repo: https://github.com/adrienverge/yamllint.git
+    # yamllint is a more common checker to ensure the yaml parses
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+        args: ['-d', '{extends: relaxed, rules: {line-length: {max: 320}}}']
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.22.1
+    hooks:
+      - id: gitleaks
+  - repo: https://github.com/google/yamlfmt
+    # opinionated formatter: like black, golines, etc
+    rev: v0.14.0
+    hooks:
+      - id: yamlfmt
+        args: ['-exclude', '.github/workflows']
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-json
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.31.0
+    hooks:
+      - id: check-github-actions
+      - id: check-github-workflows
+  - repo: https://github.com/renovatebot/pre-commit-hooks
+    rev: 39.113.0
+    hooks:
+      - id: renovate-config-validator
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0
+    hooks:
+      - id: hadolint-docker
