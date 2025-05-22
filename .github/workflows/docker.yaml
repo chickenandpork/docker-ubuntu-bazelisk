@@ -22,6 +22,11 @@ jobs:
         id: version
         run: echo ::set-output name=version::$(jq -r '."."' .github/release-please-manifest.json)
       -
+        name: RenovateBot Version Codes
+        id: versions
+        run: |
+            jq -r 'to_entries[] | "name=\(.key)::\(.value.version)"' .github/renovate-regex.json | sed -e 's/::v/::/g'| xargs -I '{}' echo "::set-output {}"
+      -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       -
@@ -31,6 +36,8 @@ jobs:
         name: Build and push on default branch
         uses: docker/build-push-action@v6
         with:
+          build-args: |
+            VER_BAZELISK=${{ steps.versions.outputs.bazelisk_darwin_amd64 }}
           platforms: linux/amd64,linux/arm64
           push: ${{ github.ref_name == github.event.repository.default_branch }}
           tags: chickenandpork/bazelbuild:latest,chickenandpork/bazelbuild:${{ github.sha }},chickenandpork/bazelbuild:${{ steps.version.outputs.version }}

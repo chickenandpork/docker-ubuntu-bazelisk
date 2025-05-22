@@ -1,0 +1,16 @@
+{
+  "bazelisk_darwin_amd64": {
+    "renovate_datasource": "github-release-attachments",
+    "renovate_depname": "bazelbuild/bazelisk",
+    "renovate_versioning": "semver",
+    "sha256": "5c77f33f91dd3df119d192175100cb5b50302eb7ee37859cbab79e10a76ccce8",
+    "version": "v1.26.0"
+  },
+  "bazelisk_darwin_arm64": {
+    "renovate_datasource": "github-release-attachments",
+    "renovate_depname": "bazelbuild/bazelisk",
+    "renovate_versioning": "semver",
+    "sha256": "d1ca9911cc19e1f17483f93956908334f2b7f3dd13f20853417b68fc3c3eb370",
+    "version": "v1.26.0"
+  }
+}
