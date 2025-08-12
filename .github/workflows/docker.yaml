@@ -16,7 +16,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       -
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v4.3.0
       -
         name: Shortcut Version Code
         id: version
