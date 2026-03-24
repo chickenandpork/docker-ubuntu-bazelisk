@@ -3,7 +3,7 @@ FROM ubuntu:24.04
 ARG TARGETPLATFORM
 ARG VER_BAZELISK
 
-RUN apt-get update && apt-get install --no-install-recommends -y curl=8.5.0-2ubuntu10.6 ca-certificates=20240203 gcc g++ jq && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install --no-install-recommends -y curl=8.5.0-2ubuntu10.8 ca-certificates=20240203 gcc g++ jq && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /usr/bin && touch /usr/bin/bazel  # allows the following `curl` to write, unsure why
 
